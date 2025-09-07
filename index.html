@@ -158,7 +158,26 @@
 
     <main>
         <div class="intro">
-            <h1 style="font-size: 6rem; font-weight: 300; letter-spacing: 12px;">PUMPCARD</h1>
+            <div class="intro-grid">
+                <div class="card">
+                    <div class="card__img" style="background: linear-gradient(135deg, #ff6b6b, #ff8e8e);">RARE</div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background: linear-gradient(135deg, #4ecdc4, #6ee4dc);">EPIC</div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background: linear-gradient(135deg, #45b7d1, #67c9e4);">LEGEND</div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background: linear-gradient(135deg, #96ceb4, #a8ddc4);">COMMON</div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background: linear-gradient(135deg, #feca57, #ffd670);">GOLD</div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background: linear-gradient(135deg, #ff9ff3, #ffb8f7);">MYSTIC</div>
+                </div>
+            </div>
         </div>
 
         <h2 class="section-title">A Better Future</h2>
@@ -219,9 +238,9 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Three different spiral effects for each section
+        // Clean spiral effects that travel fully across screen
         function initStackEffect() {
-            // Section 1 - Spiral right and up
+            // Section 1 - Clean spiral right
             const section1 = document.querySelector('[data-stack]');
             if (section1) {
                 const cards = [...section1.querySelectorAll('.card')];
@@ -236,30 +255,32 @@
                             trigger: section1,
                             start: 'top 150%',
                             end: 'bottom -200%',
-                            scrub: 0.5,
+                            scrub: 0.3,
                             onUpdate: (self) => {
                                 const progress = self.progress;
-                                const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.05)));
+                                const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.04)));
                                 
                                 if (cardProgress > 0) {
-                                    const angle = cardProgress * Math.PI * 3;
-                                    const radius = cardProgress * 300;
+                                    // Simple spiral math
+                                    const angle = cardProgress * Math.PI * 2.5;
+                                    const radius = cardProgress * 250;
                                     
                                     const spiralX = Math.cos(angle) * radius;
                                     const spiralY = Math.sin(angle) * radius * 0.3;
                                     
-                                    // Move RIGHT and UP
-                                    const finalX = spiralX + (cardProgress * window.innerWidth * 1.2);
-                                    const finalY = spiralY - (cardProgress * 200); // Move up
+                                    // Travel across full screen width + extra to exit
+                                    const travelDistance = window.innerWidth * 1.8;
+                                    const finalX = spiralX + (cardProgress * travelDistance) - (window.innerWidth * 0.4);
+                                    const finalY = spiralY;
                                     
-                                    const rotation = angle * (180 / Math.PI) * 0.2;
-                                    const scale = 1 - (cardProgress * 0.3);
-                                    const opacity = cardProgress < 0.8 ? 1 : 1 - ((cardProgress - 0.8) / 0.2);
+                                    const rotation = angle * 20;
+                                    const scale = Math.max(0.4, 1 - (cardProgress * 0.6));
+                                    const opacity = cardProgress < 0.85 ? 1 : Math.max(0, 1 - ((cardProgress - 0.85) / 0.15));
                                     
                                     gsap.set(card, {
-                                        x: finalX - window.innerWidth * 0.7,
+                                        x: finalX,
                                         y: finalY,
-                                        z: cardProgress * 30,
+                                        z: cardProgress * 20,
                                         rotation: rotation,
                                         scale: scale,
                                         opacity: opacity
@@ -271,7 +292,7 @@
                 });
             }
 
-            // Section 2 - Spiral left and down
+            // Section 2 - Clean spiral left
             const section2 = document.querySelectorAll('[data-stack]')[1];
             if (section2) {
                 const cards = [...section2.querySelectorAll('.card')];
@@ -286,30 +307,32 @@
                             trigger: section2,
                             start: 'top 150%',
                             end: 'bottom -200%',
-                            scrub: 0.5,
+                            scrub: 0.3,
                             onUpdate: (self) => {
                                 const progress = self.progress;
-                                const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.05)));
+                                const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.04)));
                                 
                                 if (cardProgress > 0) {
-                                    const angle = -cardProgress * Math.PI * 3; // Reverse direction
-                                    const radius = cardProgress * 350;
+                                    // Reverse spiral
+                                    const angle = -cardProgress * Math.PI * 2.5;
+                                    const radius = cardProgress * 280;
                                     
                                     const spiralX = Math.cos(angle) * radius;
-                                    const spiralY = Math.sin(angle) * radius * 0.4;
+                                    const spiralY = Math.sin(angle) * radius * 0.3;
                                     
-                                    // Move LEFT and DOWN
-                                    const finalX = spiralX - (cardProgress * window.innerWidth * 1.2);
-                                    const finalY = spiralY + (cardProgress * 150); // Move down
+                                    // Travel left across full screen + exit
+                                    const travelDistance = window.innerWidth * 1.8;
+                                    const finalX = spiralX - (cardProgress * travelDistance) + (window.innerWidth * 0.4);
+                                    const finalY = spiralY;
                                     
-                                    const rotation = -angle * (180 / Math.PI) * 0.25;
-                                    const scale = 1 - (cardProgress * 0.2);
-                                    const opacity = cardProgress < 0.8 ? 1 : 1 - ((cardProgress - 0.8) / 0.2);
+                                    const rotation = -angle * 20;
+                                    const scale = Math.max(0.4, 1 - (cardProgress * 0.6));
+                                    const opacity = cardProgress < 0.85 ? 1 : Math.max(0, 1 - ((cardProgress - 0.85) / 0.15));
                                     
                                     gsap.set(card, {
-                                        x: finalX + window.innerWidth * 0.7,
+                                        x: finalX,
                                         y: finalY,
-                                        z: cardProgress * 40,
+                                        z: cardProgress * 20,
                                         rotation: rotation,
                                         scale: scale,
                                         opacity: opacity
@@ -321,7 +344,7 @@
                 });
             }
 
-            // Section 3 - Spiral straight across with waves
+            // Section 3 - Clean spiral straight with gentle curve
             const section3 = document.querySelectorAll('[data-stack]')[2];
             if (section3) {
                 const cards = [...section3.querySelectorAll('.card')];
@@ -336,30 +359,32 @@
                             trigger: section3,
                             start: 'top 150%',
                             end: 'bottom -200%',
-                            scrub: 0.5,
+                            scrub: 0.3,
                             onUpdate: (self) => {
                                 const progress = self.progress;
                                 const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.04)));
                                 
                                 if (cardProgress > 0) {
-                                    const angle = cardProgress * Math.PI * 4; // More rotations
+                                    // Gentle spiral with curve
+                                    const angle = cardProgress * Math.PI * 3;
                                     const radius = cardProgress * 200;
                                     
                                     const spiralX = Math.cos(angle) * radius;
-                                    const spiralY = Math.sin(angle) * radius * 0.6; // More vertical movement
+                                    const spiralY = Math.sin(angle) * radius * 0.4;
                                     
-                                    // Move STRAIGHT ACROSS with wave motion
-                                    const finalX = spiralX + (cardProgress * window.innerWidth * 1.5);
-                                    const finalY = spiralY + Math.sin(cardProgress * Math.PI * 2) * 100; // Wave pattern
+                                    // Travel diagonally across screen + exit
+                                    const travelDistance = window.innerWidth * 1.8;
+                                    const finalX = spiralX + (cardProgress * travelDistance) - (window.innerWidth * 0.4);
+                                    const finalY = spiralY + (cardProgress * 100); // Slight downward curve
                                     
-                                    const rotation = angle * (180 / Math.PI) * 0.15;
-                                    const scale = 1 - (cardProgress * 0.4);
-                                    const opacity = cardProgress < 0.75 ? 1 : 1 - ((cardProgress - 0.75) / 0.25);
+                                    const rotation = angle * 15;
+                                    const scale = Math.max(0.3, 1 - (cardProgress * 0.7));
+                                    const opacity = cardProgress < 0.85 ? 1 : Math.max(0, 1 - ((cardProgress - 0.85) / 0.15));
                                     
                                     gsap.set(card, {
-                                        x: finalX - window.innerWidth * 0.8,
+                                        x: finalX,
                                         y: finalY,
-                                        z: cardProgress * 25,
+                                        z: cardProgress * 15,
                                         rotation: rotation,
                                         scale: scale,
                                         opacity: opacity
