@@ -53,7 +53,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 60px 40px; /* more vertical space, reasonable horizontal */
+    gap: 40px;
     max-width: 900px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -62,11 +62,15 @@
 }
 
 .intro-grid .card {
-    position: relative;
-    transform: none;
-    top: auto;
-    left: auto;
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
     margin: 0;
+}
+
+.intro-grid .card:hover {
+    transform: scale(1.1) !important;
 }
 
 /* Responsive - stack on mobile */
@@ -74,9 +78,8 @@
     .intro-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        gap: 40px 30px;
+        gap: 30px;
         max-width: 500px;
-        padding: 30px 20px;
     }
 }
 
