@@ -49,6 +49,33 @@
             position: relative;
         }
 
+        .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.intro-grid .card {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+}
+
+/* Responsive - stack on mobile */
+@media (max-width: 768px) {
+    .intro-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 20px;
+        max-width: 400px;
+    }
+}
+
         .section-title {
             text-align: center;
             font-size: 4rem;
