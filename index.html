@@ -335,7 +335,7 @@
             font-weight: 500;
         }
 
-        /* Icon-only buttons */
+        /* Icon-only buttons - no background circles */
         .play-button,
         .cta-button {
             display: inline-flex;
@@ -343,78 +343,31 @@
             justify-content: center;
             width: 60px;
             height: 60px;
-            border-radius: 50%;
             text-decoration: none;
             position: relative;
-            overflow: hidden;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             padding: 0;
+            background: none;
+            box-shadow: none;
         }
 
-        /* Roblox section button */
-        .play-button {
-            background: linear-gradient(135deg, #00d4ff, #0099cc);
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-        }
-
+        .cta-button:hover,
         .play-button:hover {
             transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
         }
 
-        /* Mint section buttons */
-        .game-btn {
-            background: linear-gradient(135deg, #00a2e8, #0073c7);
-            box-shadow: 0 4px 15px rgba(0, 162, 232, 0.3);
-        }
-
-        .mint-btn {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-        }
-
-        .pump-btn {
-            background: linear-gradient(135deg, #7b68ee, #9370db);
-            box-shadow: 0 4px 15px rgba(123, 104, 238, 0.3);
-        }
-
-        .twitter-btn {
-            background: linear-gradient(135deg, #1da1f2, #0d8bd9);
-            box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.1);
-        }
-
-        .game-btn:hover {
-            box-shadow: 0 8px 25px rgba(0, 162, 232, 0.5);
-        }
-
-        .mint-btn:hover {
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
-        }
-
-        .pump-btn:hover {
-            box-shadow: 0 8px 25px rgba(123, 104, 238, 0.5);
-        }
-
-        .twitter-btn:hover {
-            box-shadow: 0 8px 25px rgba(29, 161, 242, 0.5);
-        }
-
-        /* Remove all text */
+        /* Remove all text and shine effects */
         .button-text,
         .button-shine {
             display: none;
         }
 
-        /* Icon styling */
+        /* Icon styling - no background, just the raw image */
         .button-icon {
-            width: 32px;
-            height: 32px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -427,7 +380,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: brightness(1.2);
         }
 
         /* Button grid layout */
@@ -447,8 +399,8 @@
             }
             
             .button-icon {
-                width: 28px;
-                height: 28px;
+                width: 55px;
+                height: 55px;
             }
             
             .cta-buttons {
