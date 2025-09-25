@@ -311,6 +311,223 @@ body:not(.loading) main {
             align-items: center;
         }
 
+        /* Mint Section */
+.mint-section {
+    min-height: 80vh;
+    background: 
+        radial-gradient(circle at 50% 0%, rgba(255, 0, 150, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 0% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 100% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mint-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.02) 1deg, transparent 2deg);
+    animation: rotate 30s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.mint-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.mint-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #ff0096 0%, #00d4ff 50%, #9d4edd 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.1;
+}
+
+.mint-description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 30px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    justify-content: center;
+}
+
+.mint-btn {
+    background: linear-gradient(135deg, #ff0096, #ff4d9f);
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 0, 150, 0.3);
+}
+
+.pump-btn {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.twitter-btn {
+    background: linear-gradient(135deg, #9d4edd, #c77dff);
+    color: white;
+    box-shadow: 0 8px 25px rgba(157, 78, 221, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.mint-btn:hover {
+    box-shadow: 0 15px 40px rgba(255, 0, 150, 0.4);
+}
+
+.pump-btn:hover {
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+}
+
+.twitter-btn:hover {
+    box-shadow: 0 15px 40px rgba(157, 78, 221, 0.4);
+}
+
+.button-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.icon-placeholder {
+    font-weight: 900;
+}
+
+.button-text {
+    flex: 1;
+    text-align: center;
+}
+
+.button-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.cta-button:hover .button-shine {
+    left: 100%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .mint-title {
+        font-size: 2.5rem;
+    }
+    
+    .mint-description {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+        padding: 18px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mint-title {
+        font-size: 2rem;
+    }
+    
+    .cta-button {
+        font-size: 1rem;
+        gap: 10px;
+    }
+    
+    .button-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+        .button-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.2);
+}
+
+.button-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    padding: 5px;
+}
+
         /* Intro cards - expandable on hover */
         .intro-grid .card {
             width: 200px;
@@ -894,6 +1111,48 @@ body:not(.loading) main {
                          alt="Card Battle Screenshot" class="battle-img">
                     <div class="image-overlay"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="mint-section">
+    <div class="mint-container">
+        <div class="mint-content">
+            <h2 class="mint-title">Mint Your Brain Rot Pack Today</h2>
+            <p class="mint-description">
+                Enter our Roblox world, collect legendary cards, and join the brain rot revolution! 
+                Buy $BRAINROT tokens launching on pump.fun and secure your place in the ultimate 
+                trading card metaverse.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="https://launchmynft.io" target="_blank" class="cta-button mint-btn">
+    <div class="button-icon">
+        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5c18e4acbb38d0e9dc5cb_4124.png" 
+             alt="Launch My NFT" class="button-icon-img">
+    </div>
+    <span class="button-text">Launch NFT</span>
+    <div class="button-shine"></div>
+</a>
+                
+                <a href="https://pump.fun" target="_blank" class="cta-button pump-btn">
+    <div class="button-icon">
+        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68c457abc0279df7fc3eb5a6_68c43c9ba4355c1b5e0d63da_68a663251731174a3dc255f1_689178ebf786d570b0c29520_tw%20(1)%20(1)%20(2).png" 
+             alt="Pump Fun" class="button-icon-img">
+    </div>
+    <span class="button-text">Buy $BRAINROT</span>
+    <div class="button-shine"></div>
+</a>
+                
+                <a href="https://twitter.com" target="_blank" class="cta-button twitter-btn">
+    <div class="button-icon">
+        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5c1872568958fd78018bb_twitter.png" 
+             alt="Twitter" class="button-icon-img">
+    </div>
+    <span class="button-text">Follow Us</span>
+    <div class="button-shine"></div>
+</a>
             </div>
         </div>
     </div>
