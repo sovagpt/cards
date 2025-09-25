@@ -20,15 +20,37 @@
         }
 
         .nav-links {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 20px;
-        }
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
 
-        .nav-links a {
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ca-text {
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.nav-links a {
     color: #fff;
     text-decoration: none;
     padding: 8px 16px;
@@ -37,6 +59,25 @@
 
 .nav-links a:hover {
     transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .nav-left,
+    .nav-right {
+        gap: 15px;
+    }
+    
+    .nav-center {
+        position: relative;
+        left: auto;
+        transform: none;
+    }
 }
 
         /* Loading screen */
@@ -706,9 +747,16 @@
              class="loading-gif">
     </div>
 <nav class="nav-links">
-    <a href="https://launchmynft.io" target="_blank">[collect]</a>
-    <a href="https://pump.fun" target="_blank">[trade]</a>
-    <a href="https://www.roblox.com/games/17164680550/Card-Duels" target="_blank">[play]</a>
+    <div class="nav-left">
+        <a href="https://launchmynft.io" target="_blank">[collect]</a>
+        <a href="https://pump.fun" target="_blank">[trade]</a>
+    </div>
+    <div class="nav-center">
+        <span class="ca-text">[ca: soon]</span>
+    </div>
+    <div class="nav-right">
+        <a href="https://www.roblox.com/games/17164680550/Card-Duels" target="_blank">[play]</a>
+    </div>
 </nav>
 
     <main>
