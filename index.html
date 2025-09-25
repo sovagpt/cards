@@ -41,6 +41,50 @@
             transform: scale(1.05);
         }
 
+        /* Loading screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-gif {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+/* Hide main content initially */
+body.loading main {
+    opacity: 0;
+}
+
+body:not(.loading) main {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+@media (max-width: 768px) {
+    .loading-gif {
+        width: 200px;
+        height: 200px;
+    }
+}
+
         .intro {
             height: 100vh;
             display: flex;
@@ -204,6 +248,13 @@
     </style>
 </head>
 <body>
+    <body class="loading">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d59b4a9eca4e75db58aa0c_3dgifmaker65330.gif" 
+             alt="Loading..." 
+             class="loading-gif">
+    </div>
     <nav class="nav-links">
         <a href="#">[collect]</a>
         <a href="#">[trade]</a>
@@ -290,6 +341,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
+        // Loading animation - ADD THIS FIRST
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                const body = document.body;
+                
+                loadingScreen.classList.add('fade-out');
+                body.classList.remove('loading');
+                
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 1000);
+                
+                initStackEffect();
+            }, 2000);
+        });
         gsap.registerPlugin(ScrollTrigger);
 
         // Clean spiral effects that travel fully across screen
@@ -450,11 +517,6 @@
                 });
             }
         }
-
-        // Initialize when page loads
-        window.addEventListener('load', () => {
-            initStackEffect();
-        });
     </script>
 </body>
 </html>
