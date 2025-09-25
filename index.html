@@ -93,6 +93,200 @@ body:not(.loading) main {
             position: relative;
         }
 
+        /* Roblox Game Section */
+.roblox-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.roblox-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, #00d4ff22 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #ff006622 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.roblox-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.roblox-title {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #00d4ff, #ff0066, #00ff88);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.roblox-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+.roblox-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.roblox-images {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.roblox-img-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.roblox-img-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.roblox-img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.img-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(0,212,255,0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.roblox-img-wrapper:hover .img-glow {
+    opacity: 1;
+}
+
+.roblox-text h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.roblox-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    width: 40px;
+}
+
+.feature span:last-child {
+    color: #fff;
+    font-weight: 600;
+}
+
+.play-button {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.play-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,212,255,0.3);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.play-button:hover .button-glow {
+    left: 100%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .roblox-title {
+        font-size: 2.5rem;
+    }
+    
+    .roblox-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .roblox-text h3 {
+        font-size: 2rem;
+    }
+    
+    .features {
+        gap: 15px;
+    }
+    
+    .play-button {
+        width: 100%;
+        padding: 18px 30px;
+    }
+}
+
         /* Grid layout for intro cards only */
         .intro-grid {
             display: grid;
@@ -326,6 +520,53 @@ body:not(.loading) main {
 </div>
             </div>
         </div>
+
+        <section class="roblox-section">
+    <div class="roblox-container">
+        <h2 class="roblox-title">Enter the Brainrot Metaverse</h2>
+        <p class="roblox-subtitle">Own your NFTs • Earn $BRAINROT • Flex your collection</p>
+        
+        <div class="roblox-content">
+            <div class="roblox-images">
+                <div class="roblox-img-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5a16a2e6263f78cd06ff7_67.png" 
+                         alt="Roblox Game Screenshot" class="roblox-img">
+                    <div class="img-glow"></div>
+                </div>
+                <div class="roblox-img-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5a16afdc03d61bcb96ca4_412.png" 
+                         alt="Roblox Game Screenshot" class="roblox-img">
+                    <div class="img-glow"></div>
+                </div>
+            </div>
+            
+            <div class="roblox-text">
+                <h3>Your Cards. Your Game. Your Grind.</h3>
+                <p>Jump into our Roblox experience where your NFT collection comes alive. Battle with your cards, complete sigma challenges, and earn $BRAINROT tokens while you play.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">🎮</span>
+                        <span>Play-to-Earn Gaming</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🎯</span>
+                        <span>NFT Integration</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">💰</span>
+                        <span>$BRAINROT Rewards</span>
+                    </div>
+                </div>
+                
+                <button class="play-button">
+                    <span>Play Now on Roblox</span>
+                    <div class="button-glow"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section class="outro">
             <h2 style="text-align: center; opacity: 0.7;">Launching on Pump.fun!</h2>
