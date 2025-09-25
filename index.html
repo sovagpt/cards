@@ -183,10 +183,10 @@ body:not(.loading) main {
 .roblox-section {
     min-height: 100vh;
     background: 
-        radial-gradient(circle at 25% 25%, #ff006622 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, #00d4ff22 0%, transparent 50%),
-        radial-gradient(circle at 50% 0%, #9d4edd22 0%, transparent 70%),
-        linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 25%, #0a1a2e 50%, #2e1a0a 75%, #1a1a1a 100%);
+        radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 20, 147, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #0d1117 0%, #161b22 25%, #21262d 50%, #30363d 75%, #1c2128 100%);
     padding: 100px 20px;
     position: relative;
     overflow: hidden;
@@ -200,23 +200,47 @@ body:not(.loading) main {
     right: 0;
     bottom: 0;
     background: 
-        linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.02) 50%, transparent 52%),
-        linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.02) 50%, transparent 52%);
-    background-size: 100px 100px;
-    animation: shimmer 20s linear infinite;
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+        );
     pointer-events: none;
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100px) translateY(-100px); }
-    100% { transform: translateX(100px) translateY(100px); }
+.roblox-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, transparent 49%, rgba(0, 255, 255, 0.02) 50%, transparent 51%),
+        linear-gradient(-45deg, transparent 49%, rgba(255, 0, 255, 0.02) 50%, transparent 51%);
+    background-size: 60px 60px;
+    animation: float 15s ease-in-out infinite;
+    pointer-events: none;
 }
 
-.roblox-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
+@keyframes float {
+    0%, 100% { 
+        transform: translateX(0px) translateY(0px);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translateX(10px) translateY(-10px);
+        opacity: 0.8;
+    }
 }
 
         .play-button {
