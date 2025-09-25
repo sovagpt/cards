@@ -178,6 +178,221 @@ body:not(.loading) main {
             position: relative;
         }
 
+        /* Roblox Game Section */
+.roblox-section {
+    min-height: 100vh;
+    background: 
+        radial-gradient(circle at 25% 25%, #ff006622 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, #00d4ff22 0%, transparent 50%),
+        radial-gradient(circle at 50% 0%, #9d4edd22 0%, transparent 70%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 25%, #0a1a2e 50%, #2e1a0a 75%, #1a1a1a 100%);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.roblox-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.02) 50%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.02) 50%, transparent 52%);
+    background-size: 100px 100px;
+    animation: shimmer 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100px) translateY(-100px); }
+    100% { transform: translateX(100px) translateY(100px); }
+}
+
+.roblox-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.roblox-title-wrapper {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.roblox-title-img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.1));
+    transition: transform 0.3s ease;
+}
+
+.roblox-title-img:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 30px rgba(255,255,255,0.2));
+}
+
+.roblox-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+.roblox-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.roblox-images {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.roblox-img-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.roblox-img-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.roblox-img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.img-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(0,212,255,0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.roblox-img-wrapper:hover .img-glow {
+    opacity: 1;
+}
+
+.roblox-text h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.roblox-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
+}
+
+.feature-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.play-button {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.play-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,212,255,0.3);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.play-button:hover .button-glow {
+    left: 100%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .roblox-title-img {
+        max-width: 300px;
+    }
+    
+    .roblox-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .roblox-text h3 {
+        font-size: 2rem;
+    }
+    
+    .features {
+        gap: 15px;
+    }
+    
+    .play-button {
+        width: 100%;
+        padding: 18px 30px;
+    }
+}
+
         .content {
             position: relative;
             width: 100%;
@@ -326,6 +541,53 @@ body:not(.loading) main {
 </div>
             </div>
         </div>
+
+        <section class="roblox-section">
+    <div class="roblox-container">
+        <div class="roblox-title-wrapper">
+            <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5a2e3318d7996b72310c9_BRAIN-ROT-TRADING-CARDS-25-09-2025.png" 
+                 alt="Brain Rot Trading Cards" class="roblox-title-img">
+        </div>
+        <p class="roblox-subtitle">Own your NFTs • Earn $BRAINROT • Flex your collection</p>
+        
+        <div class="roblox-content">
+            <div class="roblox-images">
+                <div class="roblox-img-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5a16a2e6263f78cd06ff7_67.png" 
+                         alt="Roblox Game Screenshot" class="roblox-img">
+                    <div class="img-glow"></div>
+                </div>
+                <div class="roblox-img-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5a16afdc03d61bcb96ca4_412.png" 
+                         alt="Roblox Game Screenshot" class="roblox-img">
+                    <div class="img-glow"></div>
+                </div>
+            </div>
+            
+            <div class="roblox-text">
+                <h3>Your Cards. Your Game. Your Grind.</h3>
+                <p>Jump into our Roblox experience where your NFT collection comes alive. Battle with your cards, complete sigma challenges, and earn $BRAINROT tokens while you play.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-text">Play-to-Earn Gaming</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-text">NFT Integration</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-text">$BRAINROT Rewards</span>
+                    </div>
+                </div>
+                
+                <button class="play-button">
+                    <span>Play Now on Roblox</span>
+                    <div class="button-glow"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section class="outro">
             <h2 style="text-align: center; opacity: 0.7;">Launching on Pump.fun!</h2>
