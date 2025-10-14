@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The People's Rocks | $THEROCKS</title>
+    <title>Labubu卡牌 | $LABUBU</title>
     <link rel="icon" type="image/gif" href="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68e31ed9a2d6bda623016031_3dgifmaker19444.gif">
     <style>
         * {
@@ -13,74 +13,107 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
             background: #1a1a1a;
             color: #fff;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.6);
         }
 
         .nav-links {
-    position: fixed;
-    top: 20px;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-.nav-left,
-.nav-right {
-    display: flex;
-    gap: 20px;
-}
+        .nav-left,
+        .nav-right {
+            display: flex;
+            gap: 20px;
+        }
 
-.nav-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-.ca-text {
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 1rem;
-    opacity: 0.7;
-}
+        .ca-text {
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
 
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 16px;
-    transition: all 0.3s ease;
-}
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
 
-.nav-links a:hover {
-    transform: scale(1.05);
-}
+        .nav-links a:hover {
+            transform: scale(1.05);
+        }
 
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-    }
-    
-    .nav-left,
-    .nav-right {
-        gap: 15px;
-    }
-    
-    .nav-center {
-        position: relative;
-        left: auto;
-        transform: none;
-    }
-}
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 15px;
+            }
+            
+            .nav-center {
+                position: relative;
+                left: auto;
+                transform: none;
+            }
+        }
 
-        /* Loading screen */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -107,7 +140,6 @@
             object-fit: contain;
         }
 
-        /* Hide main content initially */
         body.loading main {
             opacity: 0;
         }
@@ -132,10 +164,8 @@
             position: relative;
         }
 
-        /* Card Battle Section */
         .card-battle-section {
             min-height: 100vh;
-            background: #1a1a1a;
             padding: 120px 20px;
             position: relative;
         }
@@ -214,11 +244,11 @@
         }
 
         .feature-image {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    flex-shrink: 0;
-}
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
 
         .feature-content h4 {
             color: #fff;
@@ -267,7 +297,6 @@
             opacity: 1;
         }
 
-        /* Mobile responsiveness */
         @media (max-width: 1024px) {
             .battle-content {
                 grid-template-columns: 1fr;
@@ -293,18 +322,11 @@
                 padding: 20px;
             }
             
-            .feature-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
             .feature-content h4 {
                 font-size: 1.1rem;
             }
         }
 
-        /* Grid layout for intro cards only */
         .intro-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -317,10 +339,8 @@
             align-items: center;
         }
 
-        /* Mint Section */
         .mint-section {
             min-height: 80vh;
-            background: #1a1a1a;
             padding: 100px 20px;
             position: relative;
             display: flex;
@@ -350,7 +370,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             line-height: 1.1;
-            font-family: 'Arial', sans-serif;
         }
 
         .mint-description {
@@ -365,7 +384,6 @@
             font-weight: 500;
         }
 
-        /* Icon-only buttons - no background circles */
         .play-button,
         .cta-button {
             display: inline-flex;
@@ -388,13 +406,11 @@
             transform: translateY(-3px) scale(1.1);
         }
 
-        /* Remove all text and shine effects */
         .button-text,
         .button-shine {
             display: none;
         }
 
-        /* Icon styling - no background, just the raw image */
         .button-icon {
             width: 60px;
             height: 60px;
@@ -412,7 +428,6 @@
             object-fit: contain;
         }
 
-        /* Button grid layout */
         .cta-buttons {
             display: flex;
             gap: 25px;
@@ -420,7 +435,6 @@
             flex-wrap: wrap;
         }
 
-        /* Mobile */
         @media (max-width: 768px) {
             .play-button,
             .cta-button {
@@ -447,7 +461,6 @@
             }
         }
 
-        /* Intro cards - expandable on hover */
         .intro-grid .card {
             width: 200px;
             height: 280px;
@@ -479,7 +492,6 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Responsive - stack on mobile */
         @media (max-width: 768px) {
             .intro-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -519,10 +531,8 @@
             position: relative;
         }
 
-        /* Roblox Game Section */
         .roblox-section {
             min-height: 100vh;
-            background: #1a1a1a;
             padding: 100px 20px;
             position: relative;
         }
@@ -649,7 +659,6 @@
             font-size: 1.1rem;
         }
 
-        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .roblox-title-img {
                 max-width: 300px;
@@ -678,7 +687,6 @@
             justify-content: center;
         }
 
-        /* Scroll section cards - NO hover effects */
         .content .card {
             width: 200px;
             height: 280px;
@@ -738,125 +746,131 @@
         }
     </style>
 </head>
-<body>
-    <body class="loading">
+<body class="loading">
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="https://res.cloudinary.com/dk4bbapud/video/upload/v1750951388/AdobeStock_609189287_lrzk5k.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68e31ed9a2d6bda623016031_3dgifmaker19444.gif" 
-             alt="Loading..." 
+             alt="加载中..." 
              class="loading-gif">
     </div>
-<nav class="nav-links">
-    <div class="nav-left">
-        <a href="https://launchmynft.io/sol/20489" target="_blank">[collect]</a>
-        <a href="https://pump.fun/coin/AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApump" target="_blank">[trade]</a>
-    </div>
-    <div class="nav-center">
-        <span class="ca-text">[ca:AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApump]</span>
-    </div>
-    <div class="nav-right">
-        <a href="https://x.com/thepeoplesrocks" target="_blank">[community]</a>
-    </div>
-</nav>
+
+    <nav class="nav-links">
+        <div class="nav-left">
+            <a href="https://launchmynft.io/sol/20489" target="_blank">[收藏]</a>
+            <a href="https://pump.fun/coin/AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApump" target="_blank">[交易]</a>
+        </div>
+        <div class="nav-center">
+            <span class="ca-text">[合约地址:AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApump]</span>
+        </div>
+        <div class="nav-right">
+            <a href="https://x.com/thepeoplesrocks" target="_blank">[社区]</a>
+        </div>
+    </nav>
 
     <main>
         <div class="intro">
             <div class="intro-grid">
-    <div class="card">
-        <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/14.png');"></div>
-    </div>
-    <div class="card">
-        <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/2.png');"></div>
-    </div>
-    <div class="card">
-        <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/3.png');"></div>
-    </div>
-    <div class="card">
-        <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/4.png');"></div>
-    </div>
-    <div class="card">
-        <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/5.png');"></div>
-    </div>
-    <div class="card">
-        <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/6.png');"></div>
-    </div>
-</div>
-        </div>
-
-        <h2 class="section-title">Rocks that actually do something!</h2>
-        <div class="wrap">
-            <div class="wrap__inner" data-stack>
-                <div class="content">
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/1.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/7.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/8.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/9.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/10.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/11.png');"></div></div>
-</div>
+                <div class="card">
+                    <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/14.png');"></div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/2.png');"></div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/3.png');"></div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/4.png');"></div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/5.png');"></div>
+                </div>
+                <div class="card">
+                    <div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/6.png');"></div>
+                </div>
             </div>
         </div>
 
-        <h2 class="section-title">CAN YOU SMELL WHAT THE ROCK IS COOKING</h2>
+        <h2 class="section-title">真正有用的卡牌！</h2>
         <div class="wrap">
             <div class="wrap__inner" data-stack>
                 <div class="content">
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/12.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/13.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/14.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/15.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/14.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/7.png');"></div></div>
-</div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/1.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/7.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/8.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/9.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/10.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/11.png');"></div></div>
+                </div>
             </div>
         </div>
 
-        <h2 class="section-title">Collect Them All</h2>
+        <h2 class="section-title">你能闻到Labubu的味道吗</h2>
         <div class="wrap">
             <div class="wrap__inner" data-stack>
                 <div class="content">
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/5.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/9.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/10.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/3.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/7.png');"></div></div>
-    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/12.png');"></div></div>
-</div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/12.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/13.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/14.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/15.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/14.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/7.png');"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">收集全部卡牌</h2>
+        <div class="wrap">
+            <div class="wrap__inner" data-stack>
+                <div class="content">
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/5.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/9.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/10.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/3.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/7.png');"></div></div>
+                    <div class="card"><div class="card__img" style="background-image: url('https://raw.githubusercontent.com/sovagpt/cards/main/images/12.png');"></div></div>
+                </div>
             </div>
         </div>
 
         <section class="mint-section">
-    <div class="mint-container">
-        <div class="mint-content">
-            <h2 class="mint-title">Mint Your People's Rock Today</h2>
-                
-                <a href="https://launchmynft.io/sol/20489/" target="_blank" class="cta-button mint-btn">
-                    <div class="button-icon">
-                        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5c18e4acbb38d0e9dc5cb_4124.png" 
-                             alt="Launch My NFT" class="button-icon-img">
-                    </div>
-                </a>
-                
-                <a href="https://pump.fun/coin/AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApumpcoin/AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApump" target="_blank" class="cta-button pump-btn">
-                    <div class="button-icon">
-                        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68c457abc0279df7fc3eb5a6_68c43c9ba4355c1b5e0d63da_68a663251731174a3dc255f1_689178ebf786d570b0c29520_tw%20(1)%20(1)%20(2).png" 
-                             alt="Pump Fun" class="button-icon-img">
-                    </div>
-                </a>
-                
-                <a href="https://x.com/thepeoplesrocks" target="_blank" class="cta-button twitter-btn">
-                    <div class="button-icon">
-                        <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5c1872568958fd78018bb_twitter.png" 
-                             alt="Twitter" class="button-icon-img">
-                    </div>
-                </a>
+            <div class="mint-container">
+                <div class="mint-content">
+                    <h2 class="mint-title">今天就获取你的Labubu卡牌</h2>
+                    
+                    <a href="https://launchmynft.io/sol/20489/" target="_blank" class="cta-button mint-btn">
+                        <div class="button-icon">
+                            <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5c18e4acbb38d0e9dc5cb_4124.png" 
+                                 alt="Launch My NFT" class="button-icon-img">
+                        </div>
+                    </a>
+                    
+                    <a href="https://pump.fun/coin/AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApumpcoin/AmXpgukKmMqYbsSc78QvNbjsKXCCpKuAmets9tNApump" target="_blank" class="cta-button pump-btn">
+                        <div class="button-icon">
+                            <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68c457abc0279df7fc3eb5a6_68c43c9ba4355c1b5e0d63da_68a663251731174a3dc255f1_689178ebf786d570b0c29520_tw%20(1)%20(1)%20(2).png" 
+                                 alt="Pump Fun" class="button-icon-img">
+                        </div>
+                    </a>
+                    
+                    <a href="https://x.com/thepeoplesrocks" target="_blank" class="cta-button twitter-btn">
+                        <div class="button-icon">
+                            <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/68d5c1872568958fd78018bb_twitter.png" 
+                                 alt="Twitter" class="button-icon-img">
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <section class="outro">
-            <h2 style="text-align: center; opacity: 0.7;">Launching on Pump.fun!</h2>
+            <h2 style="text-align: center; opacity: 0.7;">在Pump.fun上启动！</h2>
         </section>
     </main>
 
@@ -865,7 +879,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
-        // Loading animation - ADD THIS FIRST
+        // Loading animation
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loadingScreen = document.getElementById('loadingScreen');
@@ -881,9 +895,9 @@
                 initStackEffect();
             }, 2000);
         });
+        
         gsap.registerPlugin(ScrollTrigger);
 
-        // Clean spiral effects that travel fully across screen
         function initStackEffect() {
             // Section 1 - Clean spiral right
             const section1 = document.querySelector('[data-stack]');
@@ -906,14 +920,12 @@
                                 const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.04)));
                                 
                                 if (cardProgress > 0) {
-                                    // Simple spiral math
                                     const angle = cardProgress * Math.PI * 2.5;
                                     const radius = cardProgress * 250;
                                     
                                     const spiralX = Math.cos(angle) * radius;
                                     const spiralY = Math.sin(angle) * radius * 0.3;
                                     
-                                    // Travel across full screen width + extra to exit
                                     const travelDistance = window.innerWidth * 1.8;
                                     const finalX = spiralX + (cardProgress * travelDistance) - (window.innerWidth * 0.4);
                                     const finalY = spiralY;
@@ -958,14 +970,12 @@
                                 const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.04)));
                                 
                                 if (cardProgress > 0) {
-                                    // Reverse spiral
                                     const angle = -cardProgress * Math.PI * 2.5;
                                     const radius = cardProgress * 280;
                                     
                                     const spiralX = Math.cos(angle) * radius;
                                     const spiralY = Math.sin(angle) * radius * 0.3;
                                     
-                                    // Travel left across full screen + exit
                                     const travelDistance = window.innerWidth * 1.8;
                                     const finalX = spiralX - (cardProgress * travelDistance) + (window.innerWidth * 0.4);
                                     const finalY = spiralY;
@@ -1010,17 +1020,15 @@
                                 const cardProgress = Math.max(0, Math.min(1, progress - (index * 0.04)));
                                 
                                 if (cardProgress > 0) {
-                                    // Gentle spiral with curve
                                     const angle = cardProgress * Math.PI * 3;
                                     const radius = cardProgress * 200;
                                     
                                     const spiralX = Math.cos(angle) * radius;
                                     const spiralY = Math.sin(angle) * radius * 0.4;
                                     
-                                    // Travel diagonally across screen + exit
                                     const travelDistance = window.innerWidth * 1.8;
                                     const finalX = spiralX + (cardProgress * travelDistance) - (window.innerWidth * 0.4);
-                                    const finalY = spiralY + (cardProgress * 100); // Slight downward curve
+                                    const finalY = spiralY + (cardProgress * 100);
                                     
                                     const rotation = angle * 15;
                                     const scale = Math.max(0.3, 1 - (cardProgress * 0.7));
